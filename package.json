@@ -1,0 +1,22 @@
+{
+  "name": "canvas-app",
+  "version": "0.0.1",
+  "description": "Canvas App",
+  "author": "Selcher selcher123@gmail.com",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/selcher"
+  },
+  "keywords": [
+    "canvas",
+    "fabricjs"
+  ],
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-contrib-uglify": "^0.5.1",
+    "grunt-contrib-jshint": "^0.10.0",
+    "grunt-contrib-watch": "^0.6.1",
+    "load-grunt-tasks": "^0.6.0"
+  },
+  "license": "MIT"
+}
