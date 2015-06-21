@@ -44,6 +44,6 @@ module.exports = function( grunt ) {
 	grunt.registerTask( 'dev', [ 'watch' ] );
 
 	// Production : check code and then minify
-	grunt.registerTask( 'prod', [ 'jshint', 'uglify' ] );
+	grunt.registerTask( 'prod', [ 'uglify' ] );
 
 };
