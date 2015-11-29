@@ -38,20 +38,35 @@ body {
 
 	margin: auto;
 	padding: 20px;
+	z-index: 61;
 }
 
 #loadPage #loadBarTotal {
 	height: 2px;
-	background: rgba( 0, 139, 139, 0.5 );
+	background: rgba( 0, 139, 139, 0.3 );
 }
 
 #loadPage #loadBar {
 	height: 2px;
+	width: 0px;
 
 	margin-top: -2px;
 	background: rgba( 0, 139, 139, 1 );
 }
 
+#loadMessage {
+	padding: 10px;
+	color: #008B8B;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif, arial;
+	letter-spacing: 2px;
+}
+
+/* app container */
+#app {
+	display: none;
+}
 
 /* top menu */
 

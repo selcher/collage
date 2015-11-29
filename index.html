@@ -21,386 +21,420 @@
 
 	<!-- Loading App -->
 	<div id="loadPage">
-		<div class="circle"></div>
-		<div class="circle1"></div>
-		<div id="loadBarTotal"></div>
-		<div id="loadBar"></div>
-	</div>
-
-	<!-- Top Menu -->
-	<div id="topMenu" class="noselect">
-		<a class="githubIcon"
-			href="http://selcher.github.io/"
-			target="_blank">
-		</a>
-		<span class="menu">CANVAS</span>
-	</div>
-
-	<!-- Loading indicator -->
-	<div id="loadIndicator">
-		<div class="circle"></div>
-		<div class="circle1"></div>
-	</div>
-
-	<!-- crop image container -->
-
-	<!-- crop div menu -->
-	<div id="cropDivMenu">
-		<div id="cropImgBtn" class="button tip"
-			title="Show Crop Box">
-		</div>
-		<div id="generateCropImgBtn" class="button tip"
-			title="Generate Cropped Image">
-		</div>
-		<div id="addCropToCanvas" class="button tip"
-			title="Add Cropped Image To Canvas">
-		</div>
-		<div id="saveCrop" class="button tip"
-			title="Save Cropped Image">
-		</div>
-		<div id="closeCrop" class="button tip"
-			title="Close">
-		</div>
-	</div>
-
-	<div id="cropDiv">
-
-		<!-- Crop Image here -->
-		<div id="cropboxContainer">
-
-			<div id="cropboxFormContainer">
-
-				<img id="cropbox" src="" alt="" />
-
-				<!-- Preview of crop -->
-				<div id="imgCont">
-					<img src="" id="cropPreview">
-				</div>
-
-				<!-- This is the image we're attaching Jcrop to -->
-				<div id="cropImgsCont">
-				</div>
-
-				<form>
-					<input type="hidden" id="x" name="x" />
-					<input type="hidden" id="y" name="y" />
-					<input type="hidden" id="w" name="w" />
-					<input type="hidden" id="h" name="h" />
-				</form>
-
+		<div id="loadPageContent">
+			<div id="loadIconContainer">
+				<div class="circle"></div>
+				<div class="circle1"></div>
 			</div>
-
-		</div>
-
-		<!-- Generated crop image is shown here -->
-		<div id="collageCropContainer">
-
-			<div id="collageCropCanvasContainer">
-
-				<canvas id="collageCrop"></canvas>
-
+			<div id="loadBarContainer">
+				<div id="loadBarTotal"></div>
+				<div id="loadBar"></div>
 			</div>
-
+			<div id="loadMessage"></div>
 		</div>
-
 	</div>
 
-	<!-- toolbar container -->
-	<div id="toolbar">
+	<!-- App Container -->
+	<div id="app">
 
-		<div id="canvas_size_select_container">
-			<select id="canvas_size" name="canvas_size">
-				<option value="1366x768" selected>1366 x 768</option>
-				<option value="1024x768">1024 x 768</option>
-				<option value="800x600">800 x 600</option>
-			</select>
+		<!-- Top Menu -->
+		<div id="topMenu" class="noselect">
+			<a class="githubIcon"
+				href="http://selcher.github.io/"
+				target="_blank">
+			</a>
+			<span class="menu">CANVAS</span>
 		</div>
 
-		<ul id="toolbar_tabs">
-			<li id="newTab"><a href="#newMenu">Add</a></li>
-			<li id="editTab"><a href="#editMenu">Edit</a></li>
-			<li id="saveTab"><a href="#saveMenu">Save</a></li>
-		</ul>
+		<!-- Loading indicator -->
+		<div id="loadIndicator">
+			<div class="circle"></div>
+			<div class="circle1"></div>
+		</div>
 
-		<div id="newMenu">
-			<div class="toolbar_menu" id="toolbar_selectImg">
-				<div class="fileInput">
-					<input type="file" id="imgFile"></input>
-				</div>
-				<img id="imgPreview" src="img/no_Image.jpg" alt="" />
+		<!-- crop image container -->
+
+		<!-- crop div menu -->
+		<div id="cropDivMenu">
+			<div id="cropImgBtn" class="button tip"
+				title="Show Crop Box">
 			</div>
-			<div class="toolbar_menu" id="toolbar_addImg">
-				<input id="cropBtn" type="button" value="Crop Image"></input>
-				<br/><br/>
-				<input id="addImage" type="button" value="Add as Image"></input>
-				<br/>
-				<input id="setBkGnd" type="button" value="Set Background"></input>
+			<div id="generateCropImgBtn" class="button tip"
+				title="Generate Cropped Image">
 			</div>
+			<div id="addCropToCanvas" class="button tip"
+				title="Add Cropped Image To Canvas">
+			</div>
+			<div id="saveCrop" class="button tip"
+				title="Save Cropped Image">
+			</div>
+			<div id="closeCrop" class="button tip"
+				title="Close">
+			</div>
+		</div>
 
-			<div class="toolbar_menu border_left" id="toolbar_addShp">
+		<div id="cropDiv">
 
-				<div class="toolbar_menu_div">
-					<div id="addShape" class="add-button">
-						<div class="add-icon"></div>
-						<div class="add-label">Shape</div>
+			<!-- Crop Image here -->
+			<div id="cropboxContainer">
+
+				<div id="cropboxFormContainer">
+
+					<img id="cropbox" src="" alt="" />
+
+					<!-- Preview of crop -->
+					<div id="imgCont">
+						<img src="" id="cropPreview">
 					</div>
-					<input id="colorShape" class="color" value="66ff00">
-					</input>
-				</div>
 
-				<div class="toolbar_menu_div">
-					<form id="shapeForm">
-						<input type="radio" name="shape"
-							id="circle" value="circle"
-							checked="checked">
-						<label for="circle">
-							Circle
-						</label>
-						<br>
-						<input type="radio" name="shape"
-							id="rectangle" value="rectangle">
-						<label for="rectangle">
-							Rectangle
-						</label>
-						<br/>
-						<input type="radio" name="shape"
-							id="triangle" value="triangle">
-						<label for="triangle">
-							Triangle
-						</label>
+					<!-- This is the image we're attaching Jcrop to -->
+					<div id="cropImgsCont">
+					</div>
+
+					<form>
+						<input type="hidden" id="x" name="x" />
+						<input type="hidden" id="y" name="y" />
+						<input type="hidden" id="w" name="w" />
+						<input type="hidden" id="h" name="h" />
 					</form>
+
 				</div>
 
 			</div>
-			<div class="toolbar_menu border_left" id="toolbar_addTxt">
-				<div class="toolbar_menu_div">
-					<div id="addText" class="add-button">
-						<div class="add-icon"></div>
-						<div class="add-label">Text</div>
-					</div>
-					<input id="colorText" class="color" value="66ff00"></input>
+
+			<!-- Generated crop image is shown here -->
+			<div id="collageCropContainer">
+
+				<div id="collageCropCanvasContainer">
+
+					<canvas id="collageCrop"></canvas>
+
 				</div>
 
-				<div class="toolbar_menu_div">
+			</div>
+
+		</div>
+
+		<!-- toolbar container -->
+		<div id="toolbar">
+
+			<div id="canvas_size_select_container">
+				<select id="canvas_size" name="canvas_size">
+					<option value="1366x768" selected>1366 x 768</option>
+					<option value="1024x768">1024 x 768</option>
+					<option value="800x600">800 x 600</option>
+				</select>
+			</div>
+
+			<ul id="toolbar_tabs">
+				<li id="newTab"><a href="#newMenu">Add</a></li>
+				<li id="editTab"><a href="#editMenu">Edit</a></li>
+				<li id="saveTab"><a href="#saveMenu">Save</a></li>
+			</ul>
+
+			<div id="newMenu">
+				<div class="toolbar_menu" id="toolbar_selectImg">
+					<div class="fileInput">
+						<input type="file" id="imgFile"></input>
+					</div>
+					<img id="imgPreview" src="img/no_Image.jpg" alt="" />
+				</div>
+				<div class="toolbar_menu" id="toolbar_addImg">
+					<input id="cropBtn" type="button"
+						value="Crop Image"></input>
+					<br/><br/>
+					<input id="addImage" type="button"
+						value="Add as Image"></input>
 					<br/>
-					<select id="fontFamily" name="fontFamily">
-						<option value="Times New Roman" selected>Times New Roman</option>
-						<option value="Calibri">Calibri</option>
-					</select>
+					<input id="setBkGnd" type="button"
+						value="Set Background"></input>
+				</div>
+
+				<div class="toolbar_menu border_left" id="toolbar_addShp">
+
+					<div class="toolbar_menu_div">
+						<div id="addShape" class="add-button">
+							<div class="add-icon"></div>
+							<div class="add-label">Shape</div>
+						</div>
+						<input id="colorShape" class="color" value="66ff00">
+						</input>
+					</div>
+
+					<div class="toolbar_menu_div">
+						<form id="shapeForm">
+							<input type="radio" name="shape"
+								id="circle" value="circle"
+								checked="checked">
+							<label for="circle">
+								Circle
+							</label>
+							<br>
+							<input type="radio" name="shape"
+								id="rectangle" value="rectangle">
+							<label for="rectangle">
+								Rectangle
+							</label>
+							<br/>
+							<input type="radio" name="shape"
+								id="triangle" value="triangle">
+							<label for="triangle">
+								Triangle
+							</label>
+						</form>
+					</div>
+
+				</div>
+				<div class="toolbar_menu border_left" id="toolbar_addTxt">
+					<div class="toolbar_menu_div">
+						<div id="addText" class="add-button">
+							<div class="add-icon"></div>
+							<div class="add-label">Text</div>
+						</div>
+						<input id="colorText" class="color"
+							value="66ff00"></input>
+					</div>
+
+					<div class="toolbar_menu_div">
+						<br/>
+						<select id="fontFamily" name="fontFamily">
+							<option value="Times New Roman" selected>
+								Times New Roman
+							</option>
+							<option value="Calibri">
+								Calibri
+							</option>
+						</select>
+						<br/>
+						<select id="fontDecor" name="fontFamily">
+							<option value="" selected>
+								None
+							</option>
+							<option value="underline">
+								Underline
+							</option>
+							<option value="overline">
+								Overline
+							</option>
+							<option value="line-through">
+								Line-through
+							</option>
+						</select>
+					</div>
+				</div>
+
+				<div class="toolbar_menu border_left border_right"
+					id="toolbar_bgcolor">
+					<div class="toolbar_menu_div">
+						<div id="setBgColor" class="add-button">
+							<div class="add-icon"></div>
+							<div class="add-label">BG Color</div>
+						</div>
+						<input id="bgColorVal" class="color" value="ffffff">
+						</input>
+					</div>
+				</div>
+
+			</div>
+
+			<div id="editMenu">
+				<div class="toolbar_menu">
+					<div id="mvUp" alt="Move to Front"></div>
+					<hr/>
+					<div id="mvBk" alt="Send to Back"></div>
+				</div>
+
+				<div class="toolbar_menu border_left">
+
+					<div class="toolbar_menu_div">
+						<input id="grayscale" type="checkbox"></input>
+						<span class="editOptionTxt">&nbsp;Grayscale</span>
+						<div class="clrFloat"></div>
+
+						<input id="invert" type="checkbox"></input>
+						<span class="editOptionTxt">&nbsp;Invert</span>
+						<div class="clrFloat"></div>
+
+						<input id="sepia" type="checkbox"></input>
+						<span class="editOptionTxt">&nbsp;Sepia</span>
+						<div class="clrFloat"></div>
+
+						<input id="sepia2" type="checkbox"></input>
+						<span class="editOptionTxt">&nbsp;Sepia2</span>
+						<div class="clrFloat"></div>
+
+					</div>
+
+					<div class="toolbar_menu_div">
+						<input id="blur" type="checkbox"></input>
+						<span class="editOptionTxt">&nbsp;Blur</span>
+						<div class="clrFloat"></div>
+
+						<input id="sharpen" type="checkbox"></input>
+						<span class="editOptionTxt">&nbsp;Sharpen</span>
+						<div class="clrFloat"></div>
+
+						<input id="emboss" type="checkbox"></input>
+						<span class="editOptionTxt">&nbsp;Emboss</span>
+						<div class="clrFloat"></div>
+
+						<input id="strtn" type="checkbox"></input>
+						<span class="editOptionTxt">&nbsp;Straighten</span>
+						<div class="clrFloat"></div>
+					</div>
+
+					<div class="toolbar_menu_div">
+						<input id="flipx" type="checkbox"></input>
+						<span class="editOptionTxt">&nbsp;FlipX</span>
+						<div class="clrFloat"></div>
+
+						<input id="flipy" type="checkbox"></input>
+						<span class="editOptionTxt">&nbsp;FlipY</span>
+						<div class="clrFloat"></div>
+					</div>
+
+				</div>
+
+				<div class="toolbar_menu toolbar_menu_edit border_left">
+					<div class="toolbar_menu_row">
+						<div class="toolbar_menu_row_span">
+							&nbsp;&nbsp;Opacity
+						</div>
+						<input id="opacity-value" type="text"></input>
+					</div>
+					<div class="toolbar_menu_row">
+						<div class="toolbar_menu_row_span">
+							&nbsp;&nbsp;Angle
+						</div>
+						<input id="angle-value" type="text"></input>
+					</div>
+					<div class="toolbar_menu_row">
+						<div class="toolbar_menu_row_span">
+							&nbsp;&nbsp;Scale
+						</div>
+						<input id="scale-value" type="text"></input>
+					</div>
+					<div class="toolbar_menu_row">
+						<div class="toolbar_menu_row_span">
+							&nbsp;&nbsp;Fill
+						</div>
+						<input id="colorFill" class="color"
+							value="66ff00"></input>
+					</div>
+				</div>
+
+				<div class="toolbar_menu toolbar_menu_edit border_left">
+					<div class="toolbar_menu_div">
+						<div class="toolbar_menu_row">
+							<input id="brightness" type="checkbox"></input>
+							<span class="editOptionTxt">Brightness&nbsp;</span>
+						</div>
+						<div class="toolbar_menu_row">
+							<input id="noise" type="checkbox"></input>
+							<span class="editOptionTxt">Noise&nbsp;</span>
+						</div>
+						<div class="toolbar_menu_row">
+							<input id="gradient-transparency"
+								type="checkbox"></input>
+							<span class="editOptionTxt">Gradient&nbsp;</span>
+						</div>
+					</div>
+					<div class="toolbar_menu_div">
+						<div class="toolbar_menu_row">
+							<input id="brightness-value" type="text"></input>
+						</div>
+						<div class="toolbar_menu_row">
+							<input id="noise-value" type="text"></input>
+						</div>
+						<div class="toolbar_menu_row">
+							<input id="gradient-transparency-value"
+								type="text"></input>
+						</div>
+					</div>
+
+				</div>
+
+				<div class="toolbar_menu toolbar_menu_edit border_left border_right">
+					<input id="remove-white" type="checkbox"></input>
+					<span class="editOptionTxt">Remove White</span>
+					<div class="clrFloat"></div>
 					<br/>
-					<select id="fontDecor" name="fontFamily">
-						<option value="" selected>None</option>
-						<option value="underline">Underline</option>
-						<option value="overline">Overline</option>
-						<option value="line-through">Line-through</option>
-					</select>
-				</div>
-			</div>
-
-			<div class="toolbar_menu border_left border_right" id="toolbar_bgcolor">
-				<div class="toolbar_menu_div">
-					<div id="setBgColor" class="add-button">
-						<div class="add-icon"></div>
-						<div class="add-label">BG Color</div>
+					<div class="toolbar_menu_div">
+						<div class="toolbar_menu_row">
+							&nbsp;&nbsp;Threshold
+						</div>
+						<div class="toolbar_menu_row">
+							&nbsp;&nbsp;Distance
+						</div>
 					</div>
-					<input id="bgColorVal" class="color" value="ffffff">
-					</input>
-				</div>
-			</div>
-
-		</div>
-
-		<div id="editMenu">
-			<div class="toolbar_menu">
-				<div id="mvUp" alt="Move to Front"></div>
-				<hr/>
-				<div id="mvBk" alt="Send to Back"></div>
-			</div>
-
-			<div class="toolbar_menu border_left">
-
-				<div class="toolbar_menu_div">
-					<input id="grayscale" type="checkbox"></input>
-					<span class="editOptionTxt">&nbsp;Grayscale</span>
-					<div class="clrFloat"></div>
-
-					<input id="invert" type="checkbox"></input>
-					<span class="editOptionTxt">&nbsp;Invert</span>
-					<div class="clrFloat"></div>
-
-					<input id="sepia" type="checkbox"></input>
-					<span class="editOptionTxt">&nbsp;Sepia</span>
-					<div class="clrFloat"></div>
-
-					<input id="sepia2" type="checkbox"></input>
-					<span class="editOptionTxt">&nbsp;Sepia2</span>
-					<div class="clrFloat"></div>
-
-				</div>
-
-				<div class="toolbar_menu_div">
-					<input id="blur" type="checkbox"></input>
-					<span class="editOptionTxt">&nbsp;Blur</span>
-					<div class="clrFloat"></div>
-
-					<input id="sharpen" type="checkbox"></input>
-					<span class="editOptionTxt">&nbsp;Sharpen</span>
-					<div class="clrFloat"></div>
-
-					<input id="emboss" type="checkbox"></input>
-					<span class="editOptionTxt">&nbsp;Emboss</span>
-					<div class="clrFloat"></div>
-
-					<input id="strtn" type="checkbox"></input>
-					<span class="editOptionTxt">&nbsp;Straighten</span>
-					<div class="clrFloat"></div>
-				</div>
-
-				<div class="toolbar_menu_div">
-					<input id="flipx" type="checkbox"></input>
-					<span class="editOptionTxt">&nbsp;FlipX</span>
-					<div class="clrFloat"></div>
-
-					<input id="flipy" type="checkbox"></input>
-					<span class="editOptionTxt">&nbsp;FlipY</span>
-					<div class="clrFloat"></div>
-				</div>
-
-			</div>
-
-			<div class="toolbar_menu toolbar_menu_edit border_left">
-				<div class="toolbar_menu_row">
-					<div class="toolbar_menu_row_span">
-						&nbsp;&nbsp;Opacity
-					</div>
-					<input id="opacity-value" type="text"></input>
-				</div>
-				<div class="toolbar_menu_row">
-					<div class="toolbar_menu_row_span">
-						&nbsp;&nbsp;Angle
-					</div>
-					<input id="angle-value" type="text"></input>
-				</div>
-				<div class="toolbar_menu_row">
-					<div class="toolbar_menu_row_span">
-						&nbsp;&nbsp;Scale
-					</div>
-					<input id="scale-value" type="text"></input>
-				</div>
-				<div class="toolbar_menu_row">
-					<div class="toolbar_menu_row_span">
-						&nbsp;&nbsp;Fill
-					</div>
-					<input id="colorFill" class="color" value="66ff00"></input>
-				</div>
-			</div>
-
-			<div class="toolbar_menu toolbar_menu_edit border_left">
-				<div class="toolbar_menu_div">
-					<div class="toolbar_menu_row">
-						<input id="brightness" type="checkbox"></input>
-						<span class="editOptionTxt">Brightness&nbsp;</span>
-					</div>
-					<div class="toolbar_menu_row">
-						<input id="noise" type="checkbox"></input>
-						<span class="editOptionTxt">Noise&nbsp;</span>
-					</div>
-					<div class="toolbar_menu_row">
-						<input id="gradient-transparency" type="checkbox"></input>
-						<span class="editOptionTxt">Gradient&nbsp;</span>
-					</div>
-				</div>
-				<div class="toolbar_menu_div">
-					<div class="toolbar_menu_row">
-						<input id="brightness-value" type="text"></input>
-					</div>
-					<div class="toolbar_menu_row">
-						<input id="noise-value" type="text"></input>
-					</div>
-					<div class="toolbar_menu_row">
-						<input id="gradient-transparency-value" type="text"></input>
+					<div class="toolbar_menu_div">
+						<div class="toolbar_menu_row">
+							<input id="remove-white-threshold"
+								type="text"></input>
+						</div>
+						<div class="toolbar_menu_row">
+							<input id="remove-white-distance"
+								type="text"></input>
+						</div>
 					</div>
 				</div>
 
 			</div>
 
-			<div class="toolbar_menu toolbar_menu_edit border_left border_right">
-				<input id="remove-white" type="checkbox"></input>
-				<span class="editOptionTxt">Remove White</span>
-				<div class="clrFloat"></div>
-				<br/>
-				<div class="toolbar_menu_div">
-					<div class="toolbar_menu_row">
-						&nbsp;&nbsp;Threshold
-					</div>
-					<div class="toolbar_menu_row">
-						&nbsp;&nbsp;Distance
-					</div>
+			<div id="saveMenu">
+				<div class="toolbar_menu_save">
+					<img src="" id="savePreview" width="100" height="75"></img>
 				</div>
-				<div class="toolbar_menu_div">
-					<div class="toolbar_menu_row">
-						<input id="remove-white-threshold" type="text"></input>
-					</div>
-					<div class="toolbar_menu_row">
-						<input id="remove-white-distance" type="text"></input>
-					</div>
+				<div class="toolbar_menu_save">
+					<div id="saveImage" class="button"></div>
+					<div id="refreshImage" class="button"></div>
 				</div>
 			</div>
 
 		</div>
 
-		<div id="saveMenu">
-			<div class="toolbar_menu_save">
-				<img src="" id="savePreview" width="100" height="75"></img>
+		<!-- canvas container -->
+		<div id="canvasCont">
+
+			<!-- canvas -->
+			<div id="canvasDiv">
+				<canvas id="collage" width="1366" height="768"></canvas>
 			</div>
-			<div class="toolbar_menu_save">
-				<div id="saveImage" class="button"></div>
-				<div id="refreshImage" class="button"></div>
-			</div>
-		</div>
 
-	</div>
+			<!-- sidebar -->
+			<div id="sidebarCont">
 
-	<!-- canvas container -->
-	<div id="canvasCont">
+				<div id="sidebar-panel">
 
-		<!-- canvas -->
-		<div id="canvasDiv">
-			<canvas id="collage" width="1366" height="768"></canvas>
-		</div>
+					<h3>Canvas List</h3>
+					<div class="sideMenu" id="imgListCont">
+						<div id="imgList">No Image or shape added</div>
+					</div>
 
-		<!-- sidebar -->
-		<div id="sidebarCont">
+					<h3>Instructions</h3>
+					<div class="sideMenu" id="instructions">
+						<strong>
+							Create a collage by simply adding them onto the canvas!
+						</strong>
+						<br/>
+						<ol>
+							<li>Select an image.</li>
+							<li>Add the image, or set it as the background.</li>
+							<li>Move, resize, and edit them.</li>
+							<li>Once you're done, save it!</li>
+						</ol>
+					</div>
 
-			<div id="sidebar-panel">
-
-				<h3>Canvas List</h3>
-				<div class="sideMenu" id="imgListCont">
-					<div id="imgList">No Image or shape added</div>
-				</div>
-
-				<h3>Instructions</h3>
-				<div class="sideMenu" id="instructions">
-					<strong>
-						Create a collage by simply adding them onto the canvas!
-					</strong>
-					<br/>
-					<ol>
-						<li>Select an image.</li>
-						<li>Add the image, or set it as the background.</li>
-						<li>Move, resize, and edit them.</li>
-						<li>Once you're done, save it!</li>
-					</ol>
 				</div>
 
 			</div>
 
 		</div>
 
-	</div>
+		<div id="footerCont">
+			Made with <a href="http://fabricjs.com/">FabricJS</a>
+		</div>
 
-	<div id="footerCont">
-		Made with <a href="http://fabricjs.com/">FabricJS</a>
 	</div>
 
 
