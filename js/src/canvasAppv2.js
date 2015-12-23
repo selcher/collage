@@ -7,9 +7,14 @@ function CanvasApp( canvas ) {
     if ( this instanceof CanvasApp ) {
 
         this.canvas = canvas;
+        this.canvasHeight = canvas.getHeight();
+        this.canvasWidth = canvas.getWidth();
         this.bgColor = "#000000";
         this.color = "#66FF00";
         this.colorTxt = "#66FF00";
+
+        this.zoomFactor = 1;
+        this.zoomIncrement = 0.1;
 
         this.image = new Image();
 
@@ -89,6 +94,7 @@ CanvasApp.prototype.initObjects = function initHandlers() {
 CanvasApp.prototype.initHandlers = function initHandlers() {
 
     this.initFabricCanvasHandlers();
+    this.initZoomHandlers();
 
 };
 
@@ -222,6 +228,168 @@ CanvasApp.prototype.initFabricCanvasHandlers =
 };
 
 /**
+ * Function: initZoomHandlers
+ *
+ * Initialize handlers for zooming on canvas.
+ *
+ */
+CanvasApp.prototype.initZoomHandlers = function initZoomHandlers() {
+
+    var self = this;
+    var doc = document;
+
+    doc.getElementById( "zoom-in-button" ).addEventListener(
+        "click",
+        function() {
+            self.zoomIn();
+        }
+    );
+
+    doc.getElementById( "zoom-out-button" ).addEventListener(
+        "click",
+        function() {
+            self.zoomOut();
+        }
+    );
+
+    doc.getElementById( "zoom-reset-button" ).addEventListener(
+        "click",
+        function() {
+            self.zoomReset();
+        }
+    );
+
+};
+
+/**
+ * Function: setZoomFactor
+ *
+ * Set the zoom factor with the given value.
+ *
+ * @param factor
+ */
+CanvasApp.prototype.setZoomFactor = function setZoomFactor( factor ) {
+
+    this.zoomFactor = factor;
+
+};
+
+/**
+ * Function: zoomIn
+ *
+ * Zoom in
+ *
+ */
+CanvasApp.prototype.zoomIn = function zoomIn() {
+
+    this.setZoomFactor( this.zoomFactor + this.zoomIncrement );
+    this.zoom( 1 + this.zoomIncrement );
+
+};
+
+/**
+ * Function: zoomOut
+ *
+ * Zoom out
+ *
+ */
+CanvasApp.prototype.zoomOut = function zoomOut() {
+
+    this.setZoomFactor( this.zoomFactor - this.zoomIncrement );
+    this.zoom( 1 - this.zoomIncrement );
+
+};
+
+/**
+ * Function: zoomReset
+ *
+ * Reset zooming on canvas.
+ *
+ */
+CanvasApp.prototype.zoomReset = function zoomReset() {
+
+    var canvas = this.canvas;
+    var resetFactor = this.canvasWidth / canvas.getWidth();
+
+    this.setZoomFactor( 1 );
+    this.zoom( resetFactor );
+
+};
+
+/**
+ * Function: zoom
+ *
+ * Perform zoom on canvas based on factor.
+ *
+ * @param factor
+ */
+CanvasApp.prototype.zoom = function zoom( factor ) {
+
+    var canvas = this.canvas;
+    var floor = Math.floor;
+    var abs = Math.abs;
+
+    if ( canvas.backgroundImage ) {
+
+        // Need to scale background images as well
+        var bgImg = canvas.backgroundImage;
+
+        bgImg.width = floor( bgImg.width * abs( factor ) );
+        bgImg.height = floor( bgImg.height * abs( factor ) );
+
+    }
+
+    var objects = canvas.getObjects();
+
+    for ( var i in objects ) {
+
+        var currentObj = objects[ i ];
+        var scaleX = currentObj.scaleX;
+        var scaleY = currentObj.scaleY;
+        var left = currentObj.left;
+        var top = currentObj.top;
+
+        var tempScaleX = scaleX * factor;
+        var tempScaleY = scaleY * factor;
+        var tempLeft = left * factor;
+        var tempTop = top * factor;
+
+        currentObj.scaleX = tempScaleX;
+        currentObj.scaleY = tempScaleY;
+        currentObj.left = tempLeft;
+        currentObj.top = tempTop;
+
+        currentObj.setCoords();
+
+    }
+
+    canvas.renderAll();
+
+    canvas.setWidth( floor( canvas.getWidth() * abs( factor ) ) );
+    canvas.setHeight( floor( canvas.getHeight() * abs( factor ) ) );
+    canvas.calcOffset();
+
+};
+
+/**
+ * Function: setSize
+ *
+ * Set size
+ *
+ */
+CanvasApp.prototype.setSize = function setSize( width, height ) {
+
+    if ( width ) {
+        this.canvasWidth = width;
+    }
+
+    if ( height ) {
+        this.canvasHeight = height;
+    }
+
+};
+
+/**
  * Function: setColor
  *
  * Set color
@@ -297,6 +465,22 @@ CanvasApp.prototype.updateCanvasBgColor = function updateCanvasBgColor() {
     this.canvas.backgroundColor = this.bgColor;
 
     this.updateCanvas();
+
+};
+
+/**
+ * Function: updateCanvasSize
+ *
+ * Update the size of the canvas.
+ *
+ */
+CanvasApp.prototype.updateCanvasSize = function updateCanvasSize() {
+
+    var canvas = this.canvas;
+
+    canvas.setWidth( this.canvasWidth * this.zoomFactor );
+    canvas.setHeight( this.canvasHeight * this.zoomFactor );
+    canvas.calcOffset();
 
 };
 
@@ -743,9 +927,10 @@ CanvasApp.prototype.flip = function flip( type ) {
 
     var canvas = this.canvas;
 	var currentObject = canvas.getActiveObject();
-	var flip = currentObject.get( "flip" + type );
 
 	if ( currentObject ) {
+
+        var flip = currentObject.get( "flip" + type );
 
         if ( flip ) {
 
@@ -760,6 +945,25 @@ CanvasApp.prototype.flip = function flip( type ) {
 		canvas.renderAll();
 
     }
+
+};
+
+CanvasApp.prototype.onSaveImage = function onSaveImage() {
+
+    var self = this;
+    var currentZoomFactor = this.zoomFactor;
+    var restoreZoom = function() {
+
+        self.zoomFactor = currentZoomFactor;
+        self.zoom( currentZoomFactor );
+
+    };
+
+    this.zoomReset();
+
+	this.saveImage();
+
+    setTimeout( restoreZoom, 100 );
 
 };
 

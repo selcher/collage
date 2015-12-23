@@ -60,9 +60,8 @@ CanvasAppToolbar.prototype.initCanvasSizeHandlers =
             var width = parseInt( size[ 0 ] );
             var height = parseInt( size[ 1 ] );
 
-            self.app.canvas.setWidth( width );
-            self.app.canvas.setHeight( height );
-            self.app.canvas.calcOffset();
+            self.app.setSize( width, height );
+            self.app.updateCanvasSize();
 
             // Add 1 for boder
             $( "#canvasCont" ).height( height + 1 );
@@ -450,7 +449,7 @@ CanvasAppToolbar.prototype.initSaveTabHandler = function initSaveTabHandler() {
 
 	document.getElementById( "saveImage" ).onclick = function() {
 
-        self.app.saveImage();
+        self.app.onSaveImage();
 
     };
 

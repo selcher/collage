@@ -721,6 +721,16 @@ canvas cont = 800 + 200
 
 
 
+/* Zoom container */
+#zoom-buttons {
+	position: absolute;
+	top: 20px;
+	left: 20px;
+	z-index: 9;
+}
+
+
+
 /* canvas container */
 /*
 canvas container = 800 + 200
@@ -742,6 +752,7 @@ canvas div  = 800 + 2
 #canvasDiv {
 	float: right;
 	width: 1368px;
+	position: relative;
 
 	border-top: 1px solid #AAAAAA;
 }
