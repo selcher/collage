@@ -425,6 +425,10 @@ canvas cont = 800 + 200
 	-webkit-border-radius: 0;
 }
 
+#toolbar_tabs .ui-tabs-active a:focus {
+	outline: none;
+}
+
 #toolbar .ui-tabs-panel {
 	height: 93px;
 	padding: 0px;
